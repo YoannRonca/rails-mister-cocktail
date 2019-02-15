@@ -4,11 +4,17 @@
     <h1><%= @cocktail.name %></h1>
     <br>
     <% @cocktail.doses.each do |dose| %>
-    <h3><%= dose.amount %> <%= dose.ingredient.name%> </h3>
-    <h4><%= dose.description %></h4>
+      <h3><%= dose.amount %> <%= dose.ingredient.name%> </h3>
+      <h4><%= dose.description %></h4>
+      <%= link_to "Remove dose", dose_path(dose.id),
+      method: :delete, data: { confirm: "Are your sure?" },class: 'btn btn-danger'%>
     <% end %>
+
     <%= link_to "New Dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %>
+
     <%= link_to "Back", cocktails_path, class: 'btn btn-primary' %>
+
+
     </div>
   </div>
 </div>
